@@ -58,7 +58,7 @@ export default function Home() {
       </main>
 
       <footer className="p-8 text-center text-slate-600 text-xs">
-        &copy; 2025 University Cryptography Project. Built with Next.js 14 & FastAPI.
+        &copy; Cryptography Project. Built with Next.js 14 & FastAPI.
       </footer>
     </div>
   );
