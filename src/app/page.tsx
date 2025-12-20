@@ -14,7 +14,7 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center z-10">
         <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-xs font-medium backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-700">
-          <Cpu size={14} /> 
+          <Cpu size={14} /> System Absensi
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight animate-in fade-in zoom-in-95 duration-700 delay-100">
@@ -22,7 +22,7 @@ export default function Home() {
         </h1>
 
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-          Authentication system powered by <span className="text-white font-semibold">AES-CBC Encryption</span> and <span className="text-white font-semibold">LSB Steganography</span>.
+          System Absensi Gym yang menggunakan <span className="text-white font-semibold">AES-CBC Encryption</span> dan <span className="text-white font-semibold">LSB Steganography</span>.
           Secure your facility with invisible digital signatures.
         </p>
 
@@ -38,7 +38,7 @@ export default function Home() {
               Admin Console <span className="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-sm">→</span>
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Generate secure digital ID cards based on member data. Encrypts information into image pixels using LSB algorithm.
+              Generate secure digital ID cards image based on member data. Encrypts information into image pixels using LSB algorithm.
             </p>
           </Link>
 
@@ -51,7 +51,7 @@ export default function Home() {
               Public Scanner <span className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-500 text-sm">→</span>
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Verify member access by scanning digital cards. Decrypts hidden steganography layers to authenticate identity.
+              Verify member access by scanning digital cards image. Decrypts hidden steganography layers to authenticate identity.
             </p>
           </Link>
         </div>

@@ -92,7 +92,7 @@ export default function AdminPage() {
                             <ShieldCheck size={32} className="text-emerald-500" />
                         </div>
                         <h2 className="text-2xl font-bold tracking-tight">Admin Portal</h2>
-                        <p className="text-slate-500 text-xs mt-1 uppercase tracking-widest font-semibold">Restricted Access</p>
+                        <p className="text-slate-500 text-xs mt-1 uppercase tracking-widest font-semibold">Memerlukan Access</p>
                     </div>
 
                     <form onSubmit={handleLogin} className="space-y-4">
@@ -249,7 +249,7 @@ export default function AdminPage() {
                                     download={`SECURE_${adminName.replace(/\s+/g, '_').toUpperCase()}.png`}
                                     className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-emerald-50 hover:scale-105 transition-all shadow-xl"
                                 >
-                                    <Download size={20} /> Download Card
+                                    <Download size={20} /> Download Image
                                 </a>
                             </div>
                         ) : (
@@ -257,8 +257,8 @@ export default function AdminPage() {
                                 <div className="w-24 h-24 bg-slate-800/30 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/5">
                                     <FileImage size={40} className="text-slate-700" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-slate-500 mb-1">No Card Generated</h3>
-                                <p className="text-sm max-w-[200px] mx-auto opacity-60">Fill the form to generate a cryptographically secured ID card.</p>
+                                <h3 className="text-lg font-semibold text-slate-500 mb-1">No Image Generated</h3>
+                                <p className="text-sm max-w-[200px] mx-auto opacity-60">Fill the form to generate a cryptographically secured image.</p>
                             </div>
                         )}
                     </div>

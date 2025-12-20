@@ -85,7 +85,7 @@ export default function ScannerPage() {
                         )}
                     </div>
                     <h1 className="text-3xl font-bold mb-2">Access Control</h1>
-                    <p className="text-slate-400">Place your ID Card to verify identity.</p>
+                    <p className="text-slate-400">Upload foto kamu untuk verifikasi.</p>
                 </div>
 
                 <div className="bg-[#16161a] border border-white/5 rounded-3xl p-2 shadow-2xl backdrop-blur-xl">
@@ -119,8 +119,8 @@ export default function ScannerPage() {
                                         <div className="p-4 bg-white/5 rounded-full mb-4 group-hover:scale-110 transition-transform">
                                             <ScanLine className="text-slate-400" size={24} />
                                         </div>
-                                        <p className="text-sm text-slate-400 font-medium">Click to Insert Card</p>
-                                        <span className="text-xs text-slate-500 mt-2 block">(or Upload Photo)</span>
+                                        <p className="text-sm text-slate-400 font-medium">Click to Insert Photo</p>
+                                        <span className="text-xs text-slate-500 mt-2 block">(Photo yang tadi di dapat)</span>
                                     </>
                                 )}
                             </label>
