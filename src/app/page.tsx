@@ -18,7 +18,7 @@ export default function Home() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight animate-in fade-in zoom-in-95 duration-700 delay-100">
-          STENO<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">GYM</span>
+          DSFIT<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">GYM</span>
         </h1>
 
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">

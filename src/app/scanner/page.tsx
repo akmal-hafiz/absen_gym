@@ -120,6 +120,7 @@ export default function ScannerPage() {
                                             <ScanLine className="text-slate-400" size={24} />
                                         </div>
                                         <p className="text-sm text-slate-400 font-medium">Click to Insert Card</p>
+                                        <span className="text-xs text-slate-500 mt-2 block">(or Upload Photo)</span>
                                     </>
                                 )}
                             </label>
