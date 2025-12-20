@@ -22,8 +22,8 @@ export default function Home() {
         </h1>
 
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-          System Absensi Gym yang menggunakan <span className="text-white font-semibold">AES-CBC Encryption</span> dan <span className="text-white font-semibold">LSB Steganography</span>.
-          Secure your facility with invisible digital signatures.
+          System absensi gym yang menggunakan <span className="text-white font-semibold">AES-CBC Encryption</span> dan <span className="text-white font-semibold">LSB Steganography</span>.
+          Amankan data absensi gymmu dengan aman.
         </p>
 
         {/* Action Cards */}
@@ -38,7 +38,7 @@ export default function Home() {
               Admin Console <span className="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-sm">→</span>
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Generate secure digital ID cards image based on member data. Encrypts information into image pixels using LSB algorithm.
+              Generate secure digital image based on member data. Encrypts information into image pixels using LSB algorithm.
             </p>
           </Link>
 
@@ -51,7 +51,7 @@ export default function Home() {
               Public Scanner <span className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-500 text-sm">→</span>
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Verify member access by scanning digital cards image. Decrypts hidden steganography layers to authenticate identity.
+              Verify member access by scanning digital image. Decrypts hidden steganography layers to authenticate identity.
             </p>
           </Link>
         </div>
