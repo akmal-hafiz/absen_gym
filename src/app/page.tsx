@@ -14,7 +14,7 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center z-10">
         <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-xs font-medium backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-700">
-          <Cpu size={14} /> Final Year Cryptography Project
+          <Cpu size={14} /> 
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight animate-in fade-in zoom-in-95 duration-700 delay-100">
