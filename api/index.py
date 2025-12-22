@@ -8,7 +8,7 @@ from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
 from PIL import Image
 
-app = FastAPI(title="Gym Secure Attendance API (Lite)")
+app = FastAPI(root_path="/api", title="Gym Secure Attendance API (Lite)")
 
 # CORS Configuration
 app.add_middleware(
