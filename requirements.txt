@@ -1,0 +1,4 @@
+fastapi
+pycryptodome
+pillow
+python-multipart
