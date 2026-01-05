@@ -9,7 +9,8 @@ import {
     ArrowLeft,
     Loader2,
     CheckCircle2,
-    FileImage
+    FileImage,
+    XCircle
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -40,8 +41,7 @@ export default function ScannerPage() {
         formData.append('file', scanFile);
 
         try {
-            // Simulation delay for dramatic effect
-            await new Promise(r => setTimeout(r, 2000));
+            await new Promise(r => setTimeout(r, 1500));
 
             const response = await fetch(`${API_URL}/verify-card`, {
                 method: 'POST',
@@ -52,75 +52,87 @@ export default function ScannerPage() {
             if (data.status === 'success') {
                 setScanResult(data);
             } else {
-                setScanError(data.reason || 'Authentication Failed');
+                setScanError(data.reason || 'Verifikasi gagal');
             }
         } catch (err) {
-            setScanError("Connection to Security Server lost.");
+            setScanError("Gagal terhubung ke server");
         } finally {
             setIsScanning(false);
         }
     };
 
+    const resetScanner = () => {
+        setScanFile(null);
+        setScanResult(null);
+        setScanError(null);
+    };
+
     return (
-        <div className="min-h-screen bg-[#0a0a0c] text-white flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 relative overflow-hidden">
 
-            {/* Dynamic Background */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className={`absolute inset-0 transition-opacity duration-1000 ${scanResult ? 'bg-emerald-950/20' : scanError ? 'bg-red-950/20' : 'bg-transparent'}`} />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent opacity-20" />
-            </div>
+            {/* Grid Background */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
-            <Link href="/" className="absolute top-8 left-8 text-slate-500 hover:text-white flex items-center gap-2 transition-colors z-20">
-                <ArrowLeft size={20} /> Exit Scanner
+            {/* Dynamic Glow based on result */}
+            <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-[120px] pointer-events-none transition-colors duration-500 ${scanResult ? 'bg-lime-500/20' : scanError ? 'bg-red-500/20' : 'bg-lime-500/10'
+                }`} />
+
+            <Link href="/" className="absolute top-6 left-6 text-zinc-500 hover:text-white flex items-center gap-2 transition-colors z-20">
+                <ArrowLeft size={18} /> Kembali
             </Link>
 
             <div className="w-full max-w-md relative z-10">
-                <div className="text-center mb-10">
-                    <div className="inline-block p-4 bg-[#16161a] rounded-full border border-white/5 shadow-2xl mb-6 relative">
-                        <ScanLine size={48} className={`text-emerald-500 transition-all duration-500 ${isScanning ? 'opacity-50 blur-sm' : ''}`} />
-
-                        {/* Scanning Line Animation */}
-                        {isScanning && (
-                            <div className="absolute top-0 left-0 w-full h-full border-2 border-emerald-500 rounded-full animate-ping opacity-20" />
-                        )}
+                {/* Header */}
+                <div className="text-center mb-8">
+                    <div className={`inline-block p-4 rounded-2xl border mb-4 transition-all ${scanResult ? 'bg-lime-500/10 border-lime-500/30' :
+                            scanError ? 'bg-red-500/10 border-red-500/30' :
+                                'bg-zinc-900 border-zinc-800'
+                        }`}>
+                        <ScanLine size={36} className={`transition-colors ${scanResult ? 'text-lime-500' :
+                                scanError ? 'text-red-500' :
+                                    'text-lime-500'
+                            } ${isScanning ? 'animate-pulse' : ''}`} />
                     </div>
-                    <h1 className="text-3xl font-bold mb-2">Access Control</h1>
-                    <p className="text-slate-400">Upload foto kamu untuk verifikasi.</p>
+                    <h1 className="text-2xl font-bold mb-1">Scanner</h1>
+                    <p className="text-zinc-500 text-sm">Upload kartu member untuk verifikasi</p>
                 </div>
 
-                <div className="bg-[#16161a] border border-white/5 rounded-3xl p-2 shadow-2xl backdrop-blur-xl">
-                    <form onSubmit={handleScanSubmit} className="p-6 space-y-6">
-                        <div className="relative group">
+                {/* Scanner Card */}
+                <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6">
+                    <form onSubmit={handleScanSubmit} className="space-y-5">
+                        <div>
                             <input
                                 type="file"
                                 onChange={(e) => setScanFile(e.target.files ? e.target.files[0] : null)}
                                 className="hidden"
                                 id="scan-upload"
-                                accept="image/png"
+                                accept="image/png, image/jpeg"
                             />
                             <label
                                 htmlFor="scan-upload"
-                                className={`flex flex-col items-center justify-center border-2 border-dashed rounded-2xl py-12 cursor-pointer transition-all relative overflow-hidden ${scanFile ? 'border-emerald-500 bg-emerald-900/10' : 'border-white/10 hover:border-white/20 hover:bg-white/5'}`}
+                                className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl py-10 cursor-pointer transition-all relative overflow-hidden ${scanFile ? 'border-lime-500/50 bg-lime-500/5' : 'border-zinc-800 hover:border-zinc-700'
+                                    }`}
                             >
                                 {scanFile ? (
                                     <>
                                         <img
                                             src={URL.createObjectURL(scanFile)}
-                                            className="w-full h-full absolute inset-0 object-cover opacity-40 blur-sm"
-                                            alt="bg"
+                                            className="w-full h-full absolute inset-0 object-cover opacity-30 blur-sm"
+                                            alt="preview"
                                         />
                                         <div className="relative z-10 text-center">
-                                            <FileImage size={32} className="mx-auto mb-2 text-emerald-400" />
-                                            <span className="text-sm font-bold text-white shadow-black drop-shadow-md">{scanFile.name}</span>
+                                            <FileImage size={28} className="mx-auto mb-2 text-lime-400" />
+                                            <span className="text-sm font-medium text-white">{scanFile.name}</span>
+                                            <span className="text-xs text-lime-500/60 block mt-1">Klik untuk ganti</span>
                                         </div>
                                     </>
                                 ) : (
                                     <>
-                                        <div className="p-4 bg-white/5 rounded-full mb-4 group-hover:scale-110 transition-transform">
-                                            <ScanLine className="text-slate-400" size={24} />
+                                        <div className="p-3 bg-zinc-900 rounded-xl mb-3 border border-zinc-800">
+                                            <ScanLine className="text-zinc-600" size={24} />
                                         </div>
-                                        <p className="text-sm text-slate-400 font-medium">Click to Insert Photo</p>
-                                        <span className="text-xs text-slate-500 mt-2 block">(Photo yang tadi di dapat)</span>
+                                        <span className="text-sm text-zinc-400">Upload kartu member</span>
+                                        <span className="text-xs text-zinc-600">Format PNG atau JPG</span>
                                     </>
                                 )}
                             </label>
@@ -128,64 +140,76 @@ export default function ScannerPage() {
 
                         <button
                             disabled={!scanFile || isScanning}
-                            className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${isScanning ? 'bg-slate-800 text-slate-400 cursor-wait' : 'bg-white text-black hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(52,211,153,0.5)]'}`}
+                            className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${isScanning
+                                    ? 'bg-zinc-800 text-zinc-500'
+                                    : 'bg-lime-500 text-black hover:bg-lime-400'
+                                }`}
                         >
                             {isScanning ? (
                                 <>
-                                    <Loader2 className="animate-spin" size={20} /> Decrypting...
+                                    <Loader2 className="animate-spin" size={18} /> Memverifikasi...
                                 </>
                             ) : (
-                                'VERIFY IDENTITY'
+                                'Verifikasi'
                             )}
                         </button>
                     </form>
                 </div>
 
-                {/* Results Pop-up */}
-                <div className={`transition-all duration-500 ease-out overflow-hidden ${scanResult || scanError ? 'max-h-[500px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}`}>
+                {/* Result */}
+                <div className={`transition-all duration-300 overflow-hidden ${scanResult || scanError ? 'max-h-[500px] mt-5' : 'max-h-0'}`}>
                     {scanResult ? (
-                        <div className="bg-emerald-600 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-8  opacity-10 pointer-events-none">
-                                <ShieldCheck size={120} />
+                        <div className="bg-lime-500 rounded-2xl p-5 relative overflow-hidden">
+                            <div className="absolute top-3 right-3 opacity-10">
+                                <ShieldCheck size={80} />
                             </div>
 
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 bg-white/20 rounded-full">
-                                    <CheckCircle2 size={24} className="text-white" />
-                                </div>
-                                <span className="font-bold text-white tracking-wider text-sm">ACCESS GRANTED</span>
+                            <div className="flex items-center gap-2 mb-4">
+                                <CheckCircle2 size={20} className="text-black" />
+                                <span className="font-bold text-black text-sm">AKSES DITERIMA</span>
                             </div>
 
-                            <div className="space-y-4 relative z-10">
+                            <div className="space-y-3 relative z-10">
                                 <div>
-                                    <label className="text-emerald-200 text-[10px] font-bold uppercase tracking-wider">Member Name</label>
-                                    <p className="text-2xl font-bold text-white">{scanResult.name}</p>
+                                    <span className="text-lime-900 text-xs font-medium">Nama Member</span>
+                                    <p className="text-xl font-bold text-black">{scanResult.name}</p>
                                 </div>
                                 <div>
-                                    <label className="text-emerald-200 text-[10px] font-bold uppercase tracking-wider">Member ID</label>
-                                    <p className="font-mono text-lg text-white/90">{scanResult.id}</p>
+                                    <span className="text-lime-900 text-xs font-medium">ID Member</span>
+                                    <p className="font-mono text-black">{scanResult.id}</p>
                                 </div>
                             </div>
 
-                            <div className="mt-6 pt-4 border-t border-white/20">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Terminal size={12} className="text-emerald-200" />
-                                    <span className="text-[10px] text-emerald-200 uppercase font-bold">Decrypted Stream</span>
+                            <div className="mt-4 pt-3 border-t border-lime-600/30">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Terminal size={12} className="text-lime-900" />
+                                    <span className="text-xs text-lime-900 font-medium">Encrypted Payload</span>
                                 </div>
-                                <p className="font-mono text-[10px] text-emerald-100 break-all leading-tight opacity-70">
+                                <p className="font-mono text-[10px] text-lime-800 break-all">
                                     {scanResult.raw_encrypted_data}
                                 </p>
                             </div>
+
+                            <button
+                                onClick={resetScanner}
+                                className="w-full mt-4 py-2 bg-black text-lime-500 rounded-lg font-medium text-sm hover:bg-zinc-900 transition-colors"
+                            >
+                                Scan Lagi
+                            </button>
                         </div>
-                    ) : (
-                        scanError && (
-                            <div className="bg-red-600 rounded-3xl p-6 shadow-2xl text-center relative overflow-hidden">
-                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-                                <AlertCircle size={48} className="mx-auto mb-4 text-white animate-bounce" />
-                                <h2 className="text-2xl font-black text-white mb-1">ACCESS DENIED</h2>
-                                <p className="text-red-100 text-sm">{scanError}</p>
-                            </div>
-                        )
+                    ) : scanError && (
+                        <div className="bg-red-500 rounded-2xl p-5 text-center relative overflow-hidden">
+                            <XCircle size={40} className="mx-auto mb-3 text-white" />
+                            <h2 className="text-lg font-bold text-white mb-1">AKSES DITOLAK</h2>
+                            <p className="text-red-100 text-sm">{scanError}</p>
+
+                            <button
+                                onClick={resetScanner}
+                                className="w-full mt-4 py-2 bg-black text-red-500 rounded-lg font-medium text-sm hover:bg-zinc-900 transition-colors"
+                            >
+                                Coba Lagi
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>
