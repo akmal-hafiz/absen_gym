@@ -95,7 +95,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Admin Panel</h3>
                 <p className="text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">
-                  Generate secure IDs. Encrypt payload & embed into carrier images.
+                  Generate for secure IDs.
                 </p>
               </div>
             </Link>
@@ -113,7 +113,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Scanner</h3>
                 <p className="text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">
-                  Verify access. Analyze pixels & decrypt hidden payloads real-time.
+                  scan for attendance.
                 </p>
               </div>
             </Link>
