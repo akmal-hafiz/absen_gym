@@ -236,8 +236,8 @@ export default function AdminPage() {
                     {/* Card Preview */}
                     <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 min-h-[350px] flex flex-col items-center justify-center">
                         {generatedImg ? (
-                            <div className="text-center w-full">
-                                <div className="relative inline-block rounded-xl overflow-hidden border border-zinc-800 mb-6">
+                            <div className="flex flex-col items-center w-full">
+                                <div className="relative rounded-xl overflow-hidden border border-zinc-800 mb-6">
                                     <img src={generatedImg} alt="Card Preview" className="max-w-full max-h-[280px] object-contain" />
                                 </div>
                                 <a

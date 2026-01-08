@@ -45,7 +45,7 @@ export default function Home() {
             raysOrigin="top-center"
             raysColor="#ffffff"
             raysSpeed={0.05}
-            lightSpread={5}
+            lightSpread={2}
             rayLength={5}
             pulsating={true}
             followMouse={true}
